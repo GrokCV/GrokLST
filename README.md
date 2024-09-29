@@ -15,8 +15,8 @@ Extensive experimental results validate MoCoLSK's effectiveness in capturing com
 Our code, dataset, and toolkit are available at https://github.com/GrokCV/GrokLST.
 
 <!-- # todo 放个数据集图像 -->
-<!-- ![GrokLST dataset](docs\groklst-region.png) -->
-![MoCoLSK-Net](docs\mocolsk-net.png)
+<!-- ![GrokLST dataset](docs/groklst-region.png) -->
+![MoCoLSK-Net](docs/mocolsk-net.png)
 
 
 ## Introduction
@@ -26,10 +26,10 @@ Our code, dataset, and toolkit are available at https://github.com/GrokCV/GrokLS
 
 * Baidu Disk: [GrokLST dataset](https://pan.baidu.com/s/1-X2PHUBpFiq6JhtUWAUXLw?pwd=Grok)
 
-![GrokLST dataset](docs\groklst-dataset.png)
+![GrokLST dataset](docs/groklst-dataset.png)
 
 # MoCoLSK: Modality-Conditional Large Selective Kernel Module
-![MoCoLSK module](docs\mocolsk.png)
+![MoCoLSK module](docs/mocolsk.png)
 
 # GrokLST Toolkit
 
@@ -382,12 +382,12 @@ missing keys in source state_dict: generator.conv1.weight, generator.conv1.bias,
 
 问题分析：
 - 首先，你会怀疑网络模型和保存的 checkpoint 中的 state_dict 不匹配，其实并不是的；
-- 这主要是因为 mmengine.runner.chechpoint.py 中的 函数 "_load_checkpoint_to_model" (大概585行) 的参数revise_keys=[(r'^module\\.', '')]:有问题；
-- '^module\\.' 是 re 中的一种模式，想将类似 "generator.module.conv1.weight" 改为 "generator.conv1.weight" ，即去掉 "generator.module.conv1.weight" 中的 "module."；
-- 但是，由于 "generator.module.conv1.weight" 并不是以 "module." 开头，即不匹配模式 '^module\\.'；
+- 这主要是因为 mmengine.runner.chechpoint.py 中的 函数 "_load_checkpoint_to_model" (大概585行) 的参数revise_keys=[(r'^module//.', '')]:有问题；
+- '^module//.' 是 re 中的一种模式，想将类似 "generator.module.conv1.weight" 改为 "generator.conv1.weight" ，即去掉 "generator.module.conv1.weight" 中的 "module."；
+- 但是，由于 "generator.module.conv1.weight" 并不是以 "module." 开头，即不匹配模式 '^module//.'；
 
 解决方法：
-- mmengine.runner.runner.py 中类 Runner 的函数 load_checkpoint 中的参数 "revise_keys=[(r'^module\\.', '')]):" (大概2111行) 替换为 "revise_keys=[(r'\bmodule.', '')]):"，实现将类似 "generator.module.conv1.weight" 改为 "generator.conv1.weight" ，即去掉 "generator.module.conv1.weight" 中的 "module."!
+- mmengine.runner.runner.py 中类 Runner 的函数 load_checkpoint 中的参数 "revise_keys=[(r'^module//.', '')]):" (大概2111行) 替换为 "revise_keys=[(r'/bmodule.', '')]):"，实现将类似 "generator.module.conv1.weight" 改为 "generator.conv1.weight" ，即去掉 "generator.module.conv1.weight" 中的 "module."!
 
 ## Get Started
 
