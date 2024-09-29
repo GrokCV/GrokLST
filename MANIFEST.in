@@ -1,0 +1,6 @@
+include requirements/*.txt
+include groklst/VERSION
+include groklst/.mim/model-index.yml
+include groklst/.mim/demo/*/*
+recursive-include groklst/.mim/configs *.py *.yml
+recursive-include groklst/.mim/tools *.sh *.py

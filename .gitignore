@@ -1,3 +1,17 @@
+
+work_dirs/
+mocolsk_work_dirs/
+data/
+tools/train_det.py
+tools/train_rotate.py
+tools/train_seg.py
+*.swp
+.dist_test/
+.vscode/
+utils/
+# MacOS
+*.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -106,10 +120,15 @@ ipython_config.py
 #pdm.lock
 #   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
 #   in version control.
+<<<<<<< HEAD
 #   https://pdm.fming.dev/latest/usage/project/#working-with-version-control
 .pdm.toml
 .pdm-python
 .pdm-build/
+=======
+#   https://pdm.fming.dev/#use-with-ide
+.pdm.toml
+>>>>>>> 5e20848 (Initial commit)
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
 __pypackages__/
@@ -160,3 +179,8 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 5e20848 (Initial commit)
