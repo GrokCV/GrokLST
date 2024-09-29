@@ -1,3 +1,5 @@
+tools\run_dist_test.sh
+tools\run_dist_train.sh
 
 work_dirs/
 mocolsk_work_dirs/
@@ -179,8 +181,3 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 5e20848 (Initial commit)
