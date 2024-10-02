@@ -1,8 +1,8 @@
-# 🔥🔥 Towards High-Resolution Benchmark and Toolkit for Land Surface Temperature Downscaling  🔥🔥
+# 🔥🔥 GrokLST: Towards High-Resolution Benchmark and Toolkit for Land Surface Temperature Downscaling  🔥🔥
 
 Qun Dai, Chunyang Yuan, Yimian Dai, Yuxuan Li, Xiang Li, Kang Ni, Jianhui Xu, Xiangbo Shu, Jian Yang
 
-This repository is the official site for "Towards High-Resolution Benchmark and Toolkit for Land Surface Temperature Downscaling".
+This repository is the official site for "GrokLST: Towards High-Resolution Benchmark and Toolkit for Land Surface Temperature Downscaling".
 
 
 ## Abstract
@@ -33,37 +33,34 @@ Our code, dataset, and toolkit are available at https://github.com/GrokCV/GrokLS
 
 # GrokLST Toolkit
 
-- [🔥🔥 Towards High-Resolution Benchmark and Toolkit for Land Surface Temperature Downscaling  🔥🔥](#-towards-high-resolution-benchmark-and-toolkit-for-land-surface-temperature-downscaling--)
-  - [Abstract](#abstract)
-  - [Introduction](#introduction)
-- [MoCoLSK: Modality-Conditional Large Selective Kernel Module](#mocolsk-modality-conditional-large-selective-kernel-module)
-- [GrokLST Toolkit](#groklst-toolkit)
-  - [Installation](#installation)
-    - [Step 1: Create a conda environment](#step-1-create-a-conda-environment)
-    - [Step 2: Install PyTorch](#step-2-install-pytorch)
-    - [Step 3: Install OpenMMLab 2.x Codebases](#step-3-install-openmmlab-2x-codebases)
-    - [Step 4: Install `groklst`](#step-4-install-groklst)
-  - [⭐文件夹介绍](#文件夹介绍)
-    - [configs 文件夹](#configs-文件夹)
-    - [data 文件夹](#data-文件夹)
-    - [groklst 文件夹 (核心代码)](#groklst-文件夹-核心代码)
-    - [tools 文件夹](#tools-文件夹)
-  - [🚀训练](#训练)
-    - [单卡训练](#单卡训练)
-    - [多卡训练](#多卡训练)
-  - [🚀测试](#测试)
-    - [单卡测试](#单卡测试)
-    - [多卡测试](#多卡测试)
-  - [Model Zoo and Benchmark](#model-zoo-and-benchmark)
-    - [Leaderboard](#leaderboard)
-    - [Model Zoo](#model-zoo)
-      - [Method A](#method-a)
-      - [Method B](#method-b)
-  - [BUG LOG](#bug-log)
-  - [Get Started](#get-started)
-  - [Acknowledgement](#acknowledgement)
-  - [Citation](#citation)
-  - [License](#license)
+- [Abstract](#abstract)
+- [Introduction](#introduction)
+- [Installation](#installation)
+  - [Step 1: Create a conda environment](#step-1-create-a-conda-environment)
+  - [Step 2: Install PyTorch](#step-2-install-pytorch)
+  - [Step 3: Install OpenMMLab 2.x Codebases](#step-3-install-openmmlab-2x-codebases)
+  - [Step 4: Install `groklst`](#step-4-install-groklst)
+- [⭐文件夹介绍](#文件夹介绍)
+  - [configs 文件夹](#configs-文件夹)
+  - [data 文件夹](#data-文件夹)
+  - [groklst 文件夹 (核心代码)](#groklst-文件夹-核心代码)
+  - [tools 文件夹](#tools-文件夹)
+- [🚀训练](#训练)
+  - [单卡训练](#单卡训练)
+  - [多卡训练](#多卡训练)
+- [🚀测试](#测试)
+  - [单卡测试](#单卡测试)
+  - [多卡测试](#多卡测试)
+- [Model Zoo and Benchmark](#model-zoo-and-benchmark)
+  - [Leaderboard](#leaderboard)
+  - [Model Zoo](#model-zoo)
+    - [Method A](#method-a)
+    - [Method B](#method-b)
+- [BUG LOG](#bug-log)
+- [Get Started](#get-started)
+- [Acknowledgement](#acknowledgement)
+- [Citation](#citation)
+- [License](#license)
 
 
 ## Installation
@@ -402,7 +399,12 @@ Please see [get_started.md](https://github.com/open-mmlab/mmagic/blob/main/docs/
 If you use this toolbox or benchmark in your research, please cite this project.
 
 ```bibtex
-
+@article{dai2024GrokLST,
+	title={GrokLST: Towards High-Resolution Benchmark and Toolkit for Land Surface Temperature Downscaling}, 
+	author={Dai, Qun and Yuan, Chunyang and Dai, Yimian and Li, Yuxuan and Li, Xiang and Ni, Kang and Xu, Jianhui and Shu, Xiangbo and Yang, Jian},
+	year={2024},
+	journal={arXiv},
+}
 ```
 
 ## License
