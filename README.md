@@ -24,7 +24,8 @@ Our code, dataset, and toolkit are available at https://github.com/GrokCV/GrokLS
 **DATASET DOWNLOAD at:**
 
 
-* Baidu Disk: [GrokLST dataset](https://pan.baidu.com/s/1-X2PHUBpFiq6JhtUWAUXLw?pwd=Grok)
+* [Baidu Netdisk](https://pan.baidu.com/s/1-X2PHUBpFiq6JhtUWAUXLw?pwd=Grok)
+* [OneDrive](https://1drv.ms/f/s!AmElF7K4aY9pgYEGx82XMMLm3n7zQQ?e=IsfN1I)
 
 ![GrokLST dataset](docs/groklst-dataset.png)
 
