@@ -16,7 +16,7 @@ from mmagic.registry import TRANSFORMS
 
 
 @TRANSFORMS.register_module()
-class LoadHeiheLSTMatFile(BaseTransform):
+class LoadGrokLSTMatFile(BaseTransform):
     """Load a single mat file from corresponding paths. Required
     Keys:
     - [Key]_path
@@ -68,18 +68,18 @@ class LoadHeiheLSTMatFile(BaseTransform):
 
         for filename in filenames:
             if isinstance(self.data_field_name, str):
-                data = sio.loadmat(filename)[self.data_field_name] # H W
+                data = sio.loadmat(filename)[self.data_field_name]  # H W
             elif isinstance(self.data_field_name, list):
                 data = []
-                # ori_band_name_to_idx_dict used for NormalizeHeiheLSTData!
+                # ori_band_name_to_idx_dict used for NormalizeGrokLSTData!
                 ori_band_name_to_idx_dict = dict()
                 for idx, field_name in enumerate(self.data_field_name):
                     _data = sio.loadmat(filename)[field_name]
                     ori_band_name_to_idx_dict[f"{field_name}"] = idx
                     data.append(_data)
-                
+
                 results[f"ori_band_name_to_idx_dict"] = ori_band_name_to_idx_dict
-                data = np.stack(data, axis=-1) # h w c
+                data = np.stack(data, axis=-1)  # h w c
             images.append(data)
             shapes.append(data.shape)
             if self.save_original_mat:
@@ -97,7 +97,6 @@ class LoadHeiheLSTMatFile(BaseTransform):
             results[f"ori_{self.key}"] = ori_mats
 
         return results
-
 
 
 # @TRANSFORMS.register_module()

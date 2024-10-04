@@ -19,7 +19,11 @@ default_hooks = dict(
     sampler_seed=dict(type="DistSamplerSeedHook"),
 )
 
-model_wrapper_cfg = dict(type="MMSeparateDistributedDataParallel", broadcast_buffers=False, find_unused_parameters=True)
+model_wrapper_cfg = dict(
+    type="MMSeparateDistributedDataParallel",
+    broadcast_buffers=False,
+    find_unused_parameters=True,
+)
 
 env_cfg = dict(
     cudnn_benchmark=False,
@@ -60,11 +64,13 @@ visualizer = dict(
         # "gt_img",
     ],  # for concating
     # mask_keys=["lr_mask", "hr_mask", "hr_mask"],
-    use_color_map = False, # save to mat file
-    show_imgs = False, # 是否显示图像
-    add_title = False, # 图片上是否添加标题
-    show_diff = False, # 是否在最右侧添加 pred_img - gt_img
-    show_color_bar = False, # 是否在最右侧显示色条，但是添加色条之后的图像会变小一点
+    use_color_map=False,  # save to mat file
+    show_imgs=False,  # 是否显示图像
+    add_title=False,  # 图片上是否添加标题
+    show_diff=False,  # 是否在最右侧添加 pred_img - gt_img
+    show_color_bar=False,  # 是否在最右侧显示色条，但是添加色条之后的图像会变小一点
 )
 
-custom_hooks = [dict(type="BasicVisualizationHook", interval=1, on_val=False, on_test=True)]
+custom_hooks = [
+    dict(type="BasicVisualizationHook", interval=1, on_val=False, on_test=True)
+]

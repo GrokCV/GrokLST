@@ -1,12 +1,23 @@
-tools\run_dist_test.sh
-tools\run_dist_train.sh
+# configs
+configs/_base_/datasets/groklst_dataset/groklst_dataset_x2-256-512_drop_bands.py
+configs/_base_/datasets/groklst_dataset/groklst_dataset_x4-128-512_drop_bands.py
+configs/_base_/datasets/groklst_dataset/groklst_dataset_x8-64-512_drop_bands.py
+configs/_base_/datasets/large_scale_heihe_lst/
+configs/_base_/datasets/large_scale_heihe_lst/*
+
+groklst/.mim
+groklst/models/editors/mocolsk_abs
 
 work_dirs/
-mocolsk_work_dirs/
+# mocolsk_work_dirs/
 data/
+# tools
 tools/train_det.py
 tools/train_rotate.py
 tools/train_seg.py
+tools/run_dist_test.sh
+tools/run_dist_train.sh
+
 *.swp
 .dist_test/
 .vscode/

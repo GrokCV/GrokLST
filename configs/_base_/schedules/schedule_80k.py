@@ -8,7 +8,11 @@ test_cfg = dict(type="MultiTestLoop")
 # https://mmengine.readthedocs.io/en/latest/_modules/mmengine/optim/scheduler/lr_scheduler.html
 
 param_scheduler = dict(
-    type="CosineRestartLR", by_epoch=False, periods=[80000], restart_weights=[1], eta_min=1e-7
+    type="CosineRestartLR",
+    by_epoch=False,
+    periods=[80000],
+    restart_weights=[1],
+    eta_min=1e-7,
 )
 # param_scheduler = dict(
 #     type="CosineRestartLR", by_epoch=False, periods=[40000, 40000], restart_weights=[1, 0.1], eta_min=1e-7
@@ -19,7 +23,6 @@ optim_wrapper = dict(
     type="OptimWrapper",
     optimizer=dict(type="AdamW", lr=1e-4, weight_decay=1e-5),
 )
-
 
 
 # Default setting for scaling LR automatically

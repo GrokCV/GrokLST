@@ -49,7 +49,10 @@ class FCNet(nn.Module):
 
     def eval_single_class(self, x, class_of_interest):
         if self.inc_bias:
-            return torch.matmul(x, self.class_emb.weight[class_of_interest, :]) + self.class_emb.bias[class_of_interest]
+            return (
+                torch.matmul(x, self.class_emb.weight[class_of_interest, :])
+                + self.class_emb.bias[class_of_interest]
+            )
         else:
             return torch.matmul(x, self.class_emb.weight[class_of_interest, :])
 
@@ -187,7 +190,23 @@ class RecursiveBlock(nn.Module):
 
 
 class FusionModule(nn.Module):
-    def __init__(self, inplanes=2048, planes=256, hidden=64, num_layers=2, mlp_type="a", kernel_size=3):
+    """
+    Modified Dynamic MLP module from "Dynamic MLPfor Fine-Grained Image Classification by Leveraging Geographical and Temporal Information (CVPR 2022)"
+
+    Paper link: https://arxiv.org/pdf/2203.03253 or https://openaccess.thecvf.com/content/CVPR2022/papers/Yang_Dynamic_MLP_for_Fine-Grained_Image_Classification_by_Leveraging_Geographical_and_CVPR_2022_paper.pdf#:~:text=Fine-grained%20image%20classification%20is%20a%20challenging
+
+    Github: https://github.com/ylingfeng/DynamicMLP
+    """
+
+    def __init__(
+        self,
+        inplanes=2048,
+        planes=256,
+        hidden=64,
+        num_layers=2,
+        mlp_type="a",
+        kernel_size=3,
+    ):
         super().__init__()
         self.inplanes = inplanes
         self.planes = planes
@@ -197,12 +216,20 @@ class FusionModule(nn.Module):
 
         conv2 = []
         if num_layers == 1:
-            conv2.append(RecursiveBlock(planes, planes, loc_planes=planes, mlp_type=mlp_type))
+            conv2.append(
+                RecursiveBlock(planes, planes, loc_planes=planes, mlp_type=mlp_type)
+            )
         else:
-            conv2.append(RecursiveBlock(planes, hidden, loc_planes=planes, mlp_type=mlp_type))
+            conv2.append(
+                RecursiveBlock(planes, hidden, loc_planes=planes, mlp_type=mlp_type)
+            )
             for _ in range(1, num_layers - 1):
-                conv2.append(RecursiveBlock(hidden, hidden, loc_planes=planes, mlp_type=mlp_type))
-            conv2.append(RecursiveBlock(hidden, planes, loc_planes=planes, mlp_type=mlp_type))
+                conv2.append(
+                    RecursiveBlock(hidden, hidden, loc_planes=planes, mlp_type=mlp_type)
+                )
+            conv2.append(
+                RecursiveBlock(hidden, planes, loc_planes=planes, mlp_type=mlp_type)
+            )
         self.conv2 = nn.ModuleList(conv2)
         weights_dim = 2 * 2 * kernel_size**2
         self.conv3 = nn.Linear(planes, weights_dim)
