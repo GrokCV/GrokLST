@@ -6,7 +6,7 @@ _base_ = [
 
 scale = 4
 # model settings
-module = "DynamicLSKBlock"
+module = "MoCoLSKModule"
 model = dict(
     type="BaseEditModel",
     generator=dict(
@@ -15,6 +15,7 @@ model = dict(
         gui_channels=10,
         num_feats=32,
         kernel_size=3,
+        mocolsk_kernel_size=3,
         scale=scale,
         module=module,
         n_resblocks=4,

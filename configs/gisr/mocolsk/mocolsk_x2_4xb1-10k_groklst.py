@@ -5,7 +5,7 @@ _base_ = [
 ]
 scale = 2
 # model settings
-module = "DynamicLSKBlock"
+module = "MoCoLSKModule"
 model = dict(
     type="BaseEditModel",
     generator=dict(
