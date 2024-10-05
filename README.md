@@ -52,13 +52,7 @@ Our code, dataset, and toolkit are available at https://github.com/GrokCV/GrokLS
 - [🚀测试](#测试)
   - [单卡测试](#单卡测试)
   - [多卡测试](#多卡测试)
-- [Model Zoo and Benchmark](#model-zoo-and-benchmark)
-  - [Leaderboard](#leaderboard)
-  - [Model Zoo](#model-zoo)
-    - [Method A](#method-a)
-    - [Method B](#method-b)
 - [BUG LOG](#bug-log)
-- [Get Started](#get-started)
 - [Acknowledgement](#acknowledgement)
 - [Citation](#citation)
 - [License](#license)
@@ -311,7 +305,7 @@ PORT=29500 tools/dist_test.sh configs/gisr/mocolsk/mocolsk_x8_4xb1-10k_lst.py yo
 
 
 
-## Model Zoo and Benchmark
+<!-- ## Model Zoo and Benchmark
 
 **Note: Both passwords for BaiduYun and OneDrive is `grok`**.
 
@@ -365,11 +359,12 @@ PORT=29500 tools/dist_test.sh configs/gisr/mocolsk/mocolsk_x8_4xb1-10k_lst.py yo
             <a href=""> 百度网盘 </a> | <a href=""> OneDirve </a>
         </td>
     <tr>
-</table>
+</table> -->
 
 
 ## BUG LOG
-运行 dist_test.sh / test_mmagic.py 的时候，会遇到以下问题：
+运行 `dist_test.sh` / `test_mmagic.py` 的时候，会遇到以下问题：
+
 ```shell
 "The model and loaded state dict do not match exactly
 
@@ -385,15 +380,16 @@ missing keys in source state_dict: generator.conv1.weight, generator.conv1.bias,
 - 但是，由于 "generator.module.conv1.weight" 并不是以 "module." 开头，即不匹配模式 '^module//.'；
 
 解决方法：
-- mmengine.runner.runner.py 中类 Runner 的函数 load_checkpoint 中的参数 "revise_keys=[(r'^module//.', '')]):" (大概2111行) 替换为 "revise_keys=[(r'/bmodule.', '')]):"，实现将类似 "generator.module.conv1.weight" 改为 "generator.conv1.weight" ，即去掉 "generator.module.conv1.weight" 中的 "module."!
+- mmengine.runner.runner.py 中类 Runner 的函数 load_checkpoint 中的参数 "revise_keys=[(r'^module//.', '')]):" (大概 2111 行) 替换为 "revise_keys=[(r'/bmodule.', '')]):"，实现将类似 "generator.module.conv1.weight" 改为 "generator.conv1.weight" ，即去掉 "generator.module.conv1.weight" 中的 "module."!
 
-## Get Started
+<!-- ## Get Started
 
-Please see [get_started.md](https://github.com/open-mmlab/mmagic/blob/main/docs/en/get_started/overview.md) for the basic usage of GrokLST toolkit.
+Please see [get_started.md](https://github.com/open-mmlab/mmagic/blob/main/docs/en/get_started/overview.md) for the basic usage of GrokLST toolkit. -->
 
 
 ## Acknowledgement
 
+The authors would like to thank the International Research Center of Big Data for Sustainable Development Goals (CBAS) for kindly providing the SDGSAT-1 data.
 
 ## Citation
 
