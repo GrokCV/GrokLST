@@ -7,9 +7,9 @@ Paper link: [GrokLST: Towards High-Resolution Benchmark and Toolkit for Land Sur
 
 This repository is the official site for "GrokLST: Towards High-Resolution Benchmark and Toolkit for Land Surface Temperature Downscaling".
 
-🔥 地表温度降尺度任务和 CV 领域的超分任务类似，做图像超分任务的各位大佬可以关注一下！目前用深度学习方法做地表温度降尺度任务的团队并不多（大多都是采用传统方法），基本没有用于深度学习模型训练用的公开数据集，算得上是一个相对滞后的领域。但地表温度降尺度任务具有重要的现实意义，特别是在环境科学、气候研究、农业、城市规划等多个领域。因此，地表温度降尺度领域有着非常好的发展前景和现实意义。
+🔥 The task of land surface temperature downscaling is similar to super-resolution tasks in the field of computer vision (CV). Researchers working on image super-resolution may want to take note of this! Currently, there are not many teams using deep learning methods for land surface temperature downscaling (most still rely on traditional methods), and there are almost no publicly available datasets for training deep learning models. This is considered a relatively underdeveloped field. However, land surface temperature downscaling has significant practical implications, especially in environmental science, climate research, agriculture, urban planning, and other areas. Therefore, this field holds great potential for development and real-world impact.
 
-🔥 鉴于以上现状，我们提出了第一个高分辨率地表温度降尺度数据集 GrokLST 以及相应工具箱 GrokLST toolkit，我们的工具箱包含了 40+ 降尺度（即超分）方法，包括单张图像降尺度方法（SISR）以及引导图像降尺度方法（GISR）。希望我们的工作能够促使该领域更好地向前发展！
+🔥 In light of this, we have proposed the first high-resolution land surface temperature downscaling dataset, GrokLST, along with the corresponding GrokLST toolkit. Our toolkit includes over 40 downscaling (or super-resolution) methods, covering both single-image super-resolution (SISR) and guided-image super-resolution (GISR) techniques. We hope our work can contribute to advancing the field!
 ## Abstract
 
 Land Surface Temperature (LST) is a critical parameter for environmental studies, but obtaining high-resolution LST data remains challenging due to the spatio-temporal trade-off in satellite remote sensing.
@@ -50,17 +50,17 @@ Our code, dataset, and toolkit are available at https://github.com/GrokCV/GrokLS
     - [Step 2: Install PyTorch](#step-2-install-pytorch)
     - [Step 3: Install OpenMMLab 2.x Codebases](#step-3-install-openmmlab-2x-codebases)
     - [Step 4: Install `groklst`](#step-4-install-groklst)
-  - [⭐文件夹介绍](#文件夹介绍)
-    - [configs 文件夹](#configs-文件夹)
-    - [data 文件夹以及 GrokLST 数据集简介](#data-文件夹以及-groklst-数据集简介)
-    - [groklst 文件夹 (核心代码)](#groklst-文件夹-核心代码)
-    - [tools 文件夹](#tools-文件夹)
-  - [🚀训练](#训练)
-    - [单卡训练](#单卡训练)
-    - [多卡训练](#多卡训练)
-  - [🚀测试](#测试)
-    - [单卡测试](#单卡测试)
-    - [多卡测试](#多卡测试)
+  - [⭐Folder Introduction](#folder-introduction)
+    - [configs Folder](#configs-folder)
+    - [data Folder and GrokLST Dataset Introduction](#data-folder-and-groklst-dataset-introduction)
+    - [groklst Folder (Core Code)](#groklst-folder-core-code)
+    - [tools Folder](#tools-folder)
+  - [🚀Training](#training)
+    - [Single GPU Training](#single-gpu-training)
+    - [Multi-GPU Training](#multi-gpu-training)
+  - [🚀Testing](#testing)
+    - [Single GPU Testing](#single-gpu-testing)
+    - [Multi-GPU Testing](#multi-gpu-testing)
   - [Model Zoo and Benchmark](#model-zoo-and-benchmark)
     - [Leaderboard](#leaderboard)
     - [Model Zoo](#model-zoo)
@@ -116,33 +116,33 @@ cd GrokLST
 ```
 
 
-## ⭐文件夹介绍
+## ⭐Folder Introduction
 
-- GrokLST toolkit 整体文件夹介绍
+- Overview of the GrokLST toolkit folder
 
 ```shell
 GrokLST
-    ├── configs  (配置文件夹)
-    ├── data (数据集)
-    ├── groklst (核心代码)
-    # ├── requirements (环境依赖)
-    ├── tools (训练测试工具)
-    ├── work_dirs (存放模型及日志文件等)
+    ├── configs  (Configuration files)
+    ├── data (Datasets)
+    ├── groklst (Core code)
+    # ├── requirements (Environment dependencies)
+    ├── tools (Training and testing tools)
+    ├── work_dirs (Stores models, log files, etc.)
 ```
 
 
-### configs 文件夹
+### configs Folder
 
 ```shell
-# - 结构及作用
+# - Structure and function
 configs
     ├── _base_
-    │   ├── datasets (不同数据集的配置，包括 train、val、test 的 pipeline、dataloader 和 evaluator 等)
+    │   ├── datasets (Configurations for different datasets, including pipelines, dataloaders, and evaluators for train, val, and test)
     │   │    ├── groklst_dataset
-    │   │    │     ├──groklst_dataset_x2-256-512_sisr.py (SISR 配置，不包括引导数据，只含有 LST)
-    │   │    │     ├──groklst_dataset_x2-256-512.py (GISR 配置，包括 LST 和引导数据)
-    │   ├── schedules (迭代次数及优化器等配置)
-    │   ├── default_runtime.py (默认运行时配置)
+    │   │    │     ├──groklst_dataset_x2-256-512_sisr.py (SISR configuration, includes only LST without guidance data)
+    │   │    │     ├──groklst_dataset_x2-256-512.py (GISR configuration, includes LST and guidance data)
+    │   ├── schedules (Configurations for iterations, optimizers, etc.)
+    │   ├── default_runtime.py (Default runtime configuration)
     ├── gisr (Guided Image Super-Resolution, GISR)
     ├── ...
     │   ├── mocolsk (Ours)
@@ -151,16 +151,17 @@ configs
     │   │    ├── mocolsk_x8_4xb1-10k_groklst.py
     ├── ...
     ├── sisr (Single Image Super-Resolution, SISR)
+
 ```
 
 
-### data 文件夹以及 GrokLST 数据集简介
+### data Folder and GrokLST Dataset Introduction
 
-1. 以 groklst 数据集为例来介绍其存放结构
+1. Using the groklst dataset as an example to introduce its structure
 
 ```shell
-  data
-    ├──groklst (每个文件夹下有 641 个 mat 文件)
+    data
+    ├──groklst (Each folder contains 641 mat files)
         ├── 30m
         │   ├── guidance (HR guidance)
         │   ├── lst (LR LST)
@@ -180,120 +181,120 @@ configs
         │   ├── test.txt
 ```
 
-2. 以 groklst / 30m 为例, 来说明该数据集：
-- guidance 文件夹：其中每个 mat 文件中包含 10 个字段数据，分别是 "dem", "deepblue", "blue", "green", "red", "vre", "nir", "ndmvi", "ndvi", "ndwi";
+2. Using groklst / 30m as an example to explain the dataset:
+- guidance folder: Each mat file contains 10 fields of data, namely "dem", "deepblue", "blue", "green", "red", "vre", "nir", "ndmvi", "ndvi", and "ndwi";
 
-- lst 文件夹：是 LST（Land Surface Temperature）数据，其中 30m 分辨率的 LST 数据可当做标签 GT，其他分辨率的 LST 数据（60m, 120m, 240m）都可视为需要超分的低分辨率数据；
+- lst folder: This is the LST (Land Surface Temperature) data, where the 30m resolution LST data can be used as the GT label, and the LST data of other resolutions (60m, 120m, 240m) can be regarded as low-resolution data that needs super-resolution;
 
-- split 文件夹：是数据集的划分策略，train:val:test=6:1:3，trainval:test=7:3, 注意我们的论文 [GrokLST: Towards High-Resolution Benchmark and
-Toolkit for Land Surface Temperature Downscaling](https://arxiv.org/abs/2409.19835) 中采用 trainval.txt 当做训练集，test.txt 中指定下标的数据当验证集和测试集）;
+- split folder: This is the dataset partitioning strategy, with train:val=6:1:3 and trainval=7:3. Note that in our paper [GrokLST: Towards High-Resolution Benchmark and
+Toolkit for Land Surface Temperature Downscaling](https://arxiv.org/abs/2409.19835), we use trainval.txt as the training set, and the data indexed in test.txt as the validation and test sets.
 
-3. GrokLST 数据集是对原始大影像数据采用 0.5 的重叠率进行裁剪获取的，详见下表：
+3. The GrokLST dataset is obtained by cropping the original large image data with a 0.5 overlap rate, as shown in the table below:
 
-| 分辨率 | scale | crop size | crop step | h/w | guidance size (h,w,c) |
-| ------ | ----- | --------- | --------- | --- | --------------------- |
-| 30m    | -     | 512       | 256       | 512 | 512x512x10            |
-| 60m    | x2    | 256       | 128       | 256 | 256x256x10            |
-| 120m   | x4    | 128       | 64        | 128 | 128x128x10            |
-| 240m   | x8    | 64        | 32        | 64  | 64x64x10              |
+| Resolution | scale | crop size | crop step | h/w | guidance size (h,w,c) |
+| ---------- | ----- | --------- | --------- | --- | --------------------- |
+| 30m        | -     | 512       | 256       | 512 | 512x512x10            |
+| 60m        | x2    | 256       | 128       | 256 | 256x256x10            |
+| 120m       | x4    | 128       | 64        | 128 | 128x128x10            |
+| 240m       | x8    | 64        | 32        | 64  | 64x64x10              |
 
 
-### groklst 文件夹 (核心代码)
+### groklst Folder (Core Code)
 
-- 结构
+- Structure
 
 ```shell
 groklst
     ├── datasets
-    │   ├── transforms (数据处理的 pipeline)
-    │   │    ├── dropping_bands.py  (随机丢弃波段)
-    │   │    ├── formatting_data.py (打包数据)
-    │   │    ├── loading_data.py  (加载数据)
-    │   │    ├── normalizing_data.py (归一化引导数据)
-    │   │    ├── padding_bands.py (填充波段)
-    │   ├── groklst_dataset.py (GrokLSTDataset 类)
+    │   ├── transforms (Data processing pipelines)
+    │   │    ├── dropping_bands.py  (Random band dropping)
+    │   │    ├── formatting_data.py (Data packaging)
+    │   │    ├── loading_data.py  (Data loading)
+    │   │    ├── normalizing_data.py (Guidance data normalization)
+    │   │    ├── padding_bands.py (Band padding)
+    │   ├── groklst_dataset.py (GrokLSTDataset class)
     ├── evaluation
-    │   │    ├── metrics  (各种衡量指标)
+    │   │    ├── metrics  (Various evaluation metrics)
     ├── models
     │   ├── data_preprocessors
-    │   │    ├── data_preprocessor.py  (数据预处理器)
-    │   ├── editors (所有模型在此！！！)
+    │   │    ├── data_preprocessor.py  (Data preprocessor)
+    │   ├── editors (All models are here!!!)
     │   │    ├── ...
     │   │    ├── mocolsk (Ours)
     │   │    ├── ...
     │   ├── losses
     │   │    ├── loss_wrapper.py
-    │   │    ├── pixelwise_loss.py (自定义的 SmoothL1Loss)
+    │   │    ├── pixelwise_loss.py (Custom SmoothL1Loss)
     ├── visualization
-    │   ├── custom_concat_visualizer.py  (自定义的可视化器)
+    │   ├── custom_concat_visualizer.py  (Custom visualizer)
     │   ├── vis_backend.py
     │   ├── visualizer.py
 ```
 
 
-### tools 文件夹
+### tools Folder
 
-- 结构如下
+- Structure as follows
 
 ```shell
-tools  (训练测试入口！！！)
-    ├── dist_test.sh (分布式测试脚本)
-    ├── dist_train.sh (分布式训练脚本)
-    ├── test.py (单卡测试脚本)
-    ├── train.py (单卡训练脚本)
+tools  (Entry points for training and testing!!!)
+    ├── dist_test.sh (Distributed testing script)
+    ├── dist_train.sh (Distributed training script)
+    ├── test.py (Single GPU testing script)
+    ├── train.py (Single GPU training script)
 ```
 
 
-## 🚀训练
+## 🚀Training
 
-### 单卡训练
+### Single GPU Training
 
-- 单卡训练命令 (默认使用 GPU0)：
+- Single GPU training command (default using GPU0)：
 
 ```shell
 python tools/train.py ${CONFIG_FILE}
 
-# 以 MoCoLSK-Net 为例
+# Example with MoCoLSK-Net
 python tools/train.py configs/gisr/mocolsk/mocolsk_x8_4xb1-10k_groklst.py
 ```
 
 
-### 多卡训练
+### Multi-GPU Training
 
-- 多卡训练命令 (假设是四卡机)：
+- Multi-GPU training command (assuming a 4-GPU machine):
 
 ```shell
 # export CUDA_VISIBLE_DEVICES=0,1,2,3
 PORT=29500 tools/dist_train.sh ${CONFIG_FILE} 4
 
-# 以 MoCoLSK-Net 为例
+# Example with MoCoLSK-Net
 PORT=29500 tools/dist_train.sh configs/gisr/mocolsk/mocolsk_x8_4xb1-10k_groklst.py 4
 ```
 
 
-## 🚀测试
+## 🚀Testing
 
-### 单卡测试
+### Single GPU Testing
 
-- 单卡测试命令 (默认使用 GPU0)：
+- Single GPU testing command (default using GPU0):
 
 ```shell
 python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
 
-# 以 MoCoLSK-Net 为例：
+# Example with MoCoLSK-Net
 python tools/test.py configs/gisr/mocolsk/mocolsk_x8_4xb1-10k_groklst.py your/model/path.pth
 ```
 
 
-### 多卡测试
+### Multi-GPU Testing
 
-- 多卡测试命令 (假设是四卡机)：
+- Multi-GPU testing command (assuming a 4-GPU machine):
 
 ```shell
 # export CUDA_VISIBLE_DEVICES=0,1,2,3
 tools/dist_test.sh ${CONFIG_FILE} ${CHECKPOINT_FILE} 4
 
-# 以 MoCoLSK-Net 为例：
+# Example with MoCoLSK-Net
 PORT=29500 tools/dist_test.sh configs/gisr/mocolsk/mocolsk_x8_4xb1-10k_groklst.py your/model/path.pth 4
 ```
 
@@ -325,7 +326,7 @@ PORT=29500 tools/dist_test.sh configs/gisr/mocolsk/mocolsk_x8_4xb1-10k_groklst.p
         <td></td>
         <td></td>
         <td colspan="4">
-            <a href=""> 百度网盘 </a> | <a href=""> OneDirve </a>
+            <a href=""> BaiduDisk </a> | <a href=""> OneDirve </a>
         </td>
     <tr>
 </table>
@@ -349,7 +350,7 @@ PORT=29500 tools/dist_test.sh configs/gisr/mocolsk/mocolsk_x8_4xb1-10k_groklst.p
         <td></td>
         <td></td>
         <td colspan="4">
-            <a href=""> 百度网盘 </a> | <a href=""> OneDirve </a>
+            <a href=""> BaiduDisk </a> | <a href=""> OneDirve </a>
         </td>
     <tr>
 </table>
