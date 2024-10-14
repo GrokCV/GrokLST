@@ -7,9 +7,6 @@ Paper link: [GrokLST: Towards High-Resolution Benchmark and Toolkit for Land Sur
 
 This repository is the official site for "GrokLST: Towards High-Resolution Benchmark and Toolkit for Land Surface Temperature Downscaling".
 
-🔥 The task of land surface temperature downscaling is similar to super-resolution tasks in the field of computer vision (CV). Researchers working on image super-resolution may want to take note of this! Currently, there are not many teams using deep learning methods for land surface temperature downscaling (most still rely on traditional methods), and there are almost no publicly available datasets for training deep learning models. This is considered a relatively underdeveloped field. However, land surface temperature downscaling has significant practical implications, especially in environmental science, climate research, agriculture, urban planning, and other areas. Therefore, this field holds great potential for development and real-world impact.
-
-🔥 In light of this, we have proposed the first high-resolution land surface temperature downscaling dataset, GrokLST, along with the corresponding GrokLST toolkit. Our toolkit includes over 40 downscaling (or super-resolution) methods, covering both single-image super-resolution (SISR) and guided-image super-resolution (GISR) techniques. We hope our work can contribute to advancing the field!
 ## Abstract
 
 Land Surface Temperature (LST) is a critical parameter for environmental studies, but obtaining high-resolution LST data remains challenging due to the spatio-temporal trade-off in satellite remote sensing.
@@ -24,10 +21,16 @@ Our code, dataset, and toolkit are available at https://github.com/GrokCV/GrokLS
 ![MoCoLSK-Net](docs/mocolsk-net.png)
 
 
+
+## Preface
+🔥 The task of land surface temperature downscaling is similar to super-resolution tasks in the field of computer vision (CV). Researchers working on image super-resolution may want to take note of this! Currently, there are not many teams using deep learning methods for land surface temperature downscaling (most still rely on traditional methods), and there are almost no publicly available datasets for training deep learning models. This is considered a relatively underdeveloped field. However, land surface temperature downscaling has significant practical implications, especially in environmental science, climate research, agriculture, urban planning, and other areas. Therefore, this field holds great potential for development and real-world impact.
+
+🔥 In light of this, we have proposed the first high-resolution land surface temperature downscaling dataset, GrokLST, along with the corresponding GrokLST toolkit. Our toolkit includes over 40 downscaling (or super-resolution) methods, covering both single-image super-resolution (SISR) and guided-image super-resolution (GISR) techniques. We hope our work can contribute to advancing the field!
+
+
 ## Introduction
 
-**DATASET DOWNLOAD at:**
-
+**GrokLST DATASET DOWNLOAD at:**
 
 * [Baidu Netdisk](https://pan.baidu.com/s/1-X2PHUBpFiq6JhtUWAUXLw?pwd=Grok)
 * [OneDrive](https://1drv.ms/f/s!AmElF7K4aY9pgYEGx82XMMLm3n7zQQ?e=IsfN1I)
@@ -39,38 +42,29 @@ Our code, dataset, and toolkit are available at https://github.com/GrokCV/GrokLS
 
 # GrokLST Toolkit
 
-- [🔥🔥 GrokLST: Towards High-Resolution Benchmark and Toolkit for Land Surface Temperature Downscaling  🔥🔥](#-groklst-towards-high-resolution-benchmark-and-toolkit-for-land-surface-temperature-downscaling--)
-  - [Qun Dai, Chunyang Yuan, Yimian Dai, Yuxuan Li, Xiang Li, Kang Ni, Jianhui Xu, Xiangbo Shu, Jian Yang](#qun-dai-chunyang-yuan-yimian-dai-yuxuan-li-xiang-li-kang-ni-jianhui-xu-xiangbo-shu-jian-yang)
   - [Abstract](#abstract)
+  - [Preface](#preface)
   - [Introduction](#introduction)
-- [MoCoLSK: Modality-Conditional Large Selective Kernel Module](#mocolsk-modality-conditional-large-selective-kernel-module)
-- [GrokLST Toolkit](#groklst-toolkit)
   - [Installation](#installation)
     - [Step 1: Create a conda environment](#step-1-create-a-conda-environment)
     - [Step 2: Install PyTorch](#step-2-install-pytorch)
     - [Step 3: Install OpenMMLab 2.x Codebases](#step-3-install-openmmlab-2x-codebases)
     - [Step 4: Install `groklst`](#step-4-install-groklst)
-  - [⭐Folder Introduction](#folder-introduction)
+  - [Folder Introduction](#folder-introduction)
     - [configs Folder](#configs-folder)
     - [data Folder and GrokLST Dataset Introduction](#data-folder-and-groklst-dataset-introduction)
     - [groklst Folder (Core Code)](#groklst-folder-core-code)
     - [tools Folder](#tools-folder)
-  - [🚀Training](#training)
+  - [Training](#training)
     - [Single GPU Training](#single-gpu-training)
     - [Multi-GPU Training](#multi-gpu-training)
-  - [🚀Testing](#testing)
+  - [Testing](#testing)
     - [Single GPU Testing](#single-gpu-testing)
     - [Multi-GPU Testing](#multi-gpu-testing)
-  - [Model Zoo and Benchmark](#model-zoo-and-benchmark)
-    - [Leaderboard](#leaderboard)
-    - [Model Zoo](#model-zoo)
-      - [Method A](#method-a)
-      - [Method B](#method-b)
-  - [Get Started](#get-started)
+  - [BUG LOG](#bug-log)
   - [Acknowledgement](#acknowledgement)
   - [Citation](#citation)
   - [License](#license)
-
 
 ## Installation
 
@@ -116,7 +110,7 @@ cd GrokLST
 ```
 
 
-## ⭐Folder Introduction
+## Folder Introduction
 
 - Overview of the GrokLST toolkit folder
 
@@ -245,7 +239,7 @@ tools  (Entry points for training and testing!!!)
 ```
 
 
-## 🚀Training
+## Training
 
 ### Single GPU Training
 
@@ -272,7 +266,7 @@ PORT=29500 tools/dist_train.sh configs/gisr/mocolsk/mocolsk_x8_4xb1-10k_groklst.
 ```
 
 
-## 🚀Testing
+## Testing
 
 ### Single GPU Testing
 
@@ -299,7 +293,8 @@ PORT=29500 tools/dist_test.sh configs/gisr/mocolsk/mocolsk_x8_4xb1-10k_groklst.p
 ```
 
 
-## Model Zoo and Benchmark
+<!-- ## Model Zoo and Benchmark
+>>>>>>> a9207f24ff19bb19abdbe01e7b32a686cee15e49
 
 **Note: Both passwords for BaiduYun and OneDrive is `grok`**.
 
@@ -353,17 +348,39 @@ PORT=29500 tools/dist_test.sh configs/gisr/mocolsk/mocolsk_x8_4xb1-10k_groklst.p
             <a href=""> BaiduDisk </a> | <a href=""> OneDirve </a>
         </td>
     <tr>
-</table>
+</table> -->
 
 
-## Get Started
+## BUG LOG
+When running dist_test.sh or test.py, you may encounter the following issue:
 
-Please see [get_started.md](https://github.com/open-mmlab/mmagic/blob/main/docs/en/get_started/overview.md) for the basic usage of GrokLST toolkit. More user guides see [User Guides](https://mmagic.readthedocs.io/en/latest/)!
+```shell
+"The model and loaded state dict do not match exactly
+
+unexpected key in source state_dict: generator.module.conv1.weight, generator.module.conv1.bias, generator.module.conv2.weight, generator.module.conv2.bias, generator.module.conv3.weight, generator.module.conv3.bias
+
+missing keys in source state_dict: generator.conv1.weight, generator.conv1.bias, generator.conv2.weight, generator.conv2.bias, generator.conv3.weight, generator.conv3.bias"
+```
+
+Problem Analysis:
+- Initially, you might suspect that the network model and the state_dict saved in the checkpoint do not match, but this is not the case.
+- The issue is mainly caused by the parameter revise_keys=[(r'^module//.', '')] in the function _load_checkpoint_to_model (around line 585) in mmengine.runner.checkpoint.py.
+- '^module//.' is a regular expression pattern that aims to replace keys like "generator.module.conv1.weight" with "generator.conv1.weight", effectively removing "module." from "generator.module.conv1.weight".
+- However, since "generator.module.conv1.weight" does not begin with "module.", it doesn't match the pattern '^module//.'.
+
+Solution:
+- In the mmengine.runner.runner.py, within the load_checkpoint function of the Runner class (around line 2111), replace the parameter revise_keys=[(r'^module//.', '')] with revise_keys=[(r'/bmodule.', '')]. This change ensures that keys like "generator.module.conv1.weight" will correctly be replaced with "generator.conv1.weight", effectively removing "module.".
+
+This solution should help resolve the key mismatch when loading checkpoints.
+<!-- ## Get Started
+
+Please see [get_started.md](https://github.com/open-mmlab/mmagic/blob/main/docs/en/get_started/overview.md) for the basic usage of GrokLST toolkit. -->
 
 
 ## Acknowledgement
 
-Our GrokLST toolkit is based on [MMAgic](https://mmagic.readthedocs.io/en/latest/) developed by [OpenMMLAB](https://openmmlab.com/), and thanks to mmagic community!
+<!-- Our GrokLST toolkit is based on [MMAgic](https://mmagic.readthedocs.io/en/latest/) developed by [OpenMMLAB](https://openmmlab.com/), and thanks to mmagic community! -->
+The authors would like to thank the International Research Center of Big Data for Sustainable Development Goals (CBAS) for kindly providing the SDGSAT-1 data.
 
 ## Citation
 
